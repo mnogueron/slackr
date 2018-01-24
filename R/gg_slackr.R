@@ -59,6 +59,7 @@ ggslackr <- function(plot=last_plot(),
               add_headers(`Content-Type`="multipart/form-data"),
               body=list(file=upload_file(ftmp),
                         token=api_token,
+                        as_user = FALSE,
                         channels=modchan))
 
   invisible(res)
