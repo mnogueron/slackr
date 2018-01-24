@@ -37,6 +37,8 @@ ggslackr <- function(plot=last_plot(),
                      limitsize=TRUE,
                      api_token=Sys.getenv("SLACK_API_TOKEN"),
                      file="ggplot",
+                     username = Sys.getenv("SLACK_USERNAME"), 
+                     icon_emoji = Sys.getenv("SLACK_ICON_EMOJI"),
                      ...) {
 
   loc <- Sys.getlocale('LC_CTYPE')
@@ -58,9 +60,9 @@ ggslackr <- function(plot=last_plot(),
   res <- POST(url="https://slack.com/api/files.upload",
               add_headers(`Content-Type`="multipart/form-data"),
               body=list(file=upload_file(ftmp),
-                        token=api_token,
+                        token=api_token, channels=modchan,
                         as_user = FALSE,
-                        channels=modchan))
+                        username = username, icon_emoji = icon_emoji))
 
   invisible(res)
 
