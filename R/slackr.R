@@ -111,7 +111,7 @@ slackr <- function(...,
                            channel=slackr_chtrans(channel),
                            username=username,
                            icon_emoji=icon_emoji,
-                           as_user=TRUE,
+                           as_user=FALSE,
                            text=sprintf("```%s```", output),
                            link_names=1))
 
